@@ -2,11 +2,37 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="description" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
+        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+            {{ include('inc/preloader.html.twig') }}
+            {{ include('inc/modal.html.twig') }}
+            {{ include('inc/header.html.twig') }}
+        <div>
+            {% block body %}{% endblock %}
+        </div>
+
+            {{ include('inc/instagram.html.twig') }}
+            {{ include('inc/footer.html.twig') }}
+
+        {% block javascripts %}
+            <!-- jQuery (Necessary for All JavaScript Plugins) -->
+            <script src="{{ asset('assets/js/jquery/jquery-2.2.4.min.js') }}"></script>
+            <!-- Popper js -->
+            <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+            <!-- Bootstrap js -->
+            <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+            <!-- Plugins js -->
+            <script src="{{ asset('assets/js/plugins.js') }}"></script>
+            <!-- Active js -->
+            <script src="{{ asset('assets/js/active.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
