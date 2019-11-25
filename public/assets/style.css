@@ -795,7 +795,7 @@ img {
       top: 0;
       left: 0;
       z-index: 10;
-      background-color: rgba(48, 51, 107, 0.95);
+      background-color: rgba(110, 110, 120, 0.80);
       opacity: 0;
       visibility: hidden; }
     .instagram-feed-area .single-insta-feed:hover .hover-effects a, .instagram-feed-area .single-insta-feed:focus .hover-effects a {
