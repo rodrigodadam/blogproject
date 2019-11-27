@@ -1,0 +1,15 @@
+newCategory:
+  path: /admin/new-category
+  controller: App\Controller\admin\CategoryController::newCategory
+  methods: GET|POST
+
+newAuthor:
+  path: /admin/new-author
+  controller: App\Controller\admin\AuthorController::newAuthor
+  methods: GET|POST
+
+contactAction:
+  path: /contact/new-contact-us
+  controller: App\Controller\ContactController::contactAction
+  methods: GET|POST
+
