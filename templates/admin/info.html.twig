@@ -1,0 +1,16 @@
+{% extends'baseadmin.html.twig' %}
+
+{% block title %}Author Info{% endblock %}
+
+{% block body %}
+
+
+    <h1>{{ author.name }}</h1>
+    <h5>{{ author.email }}</h5>
+    <p>{{ author.about }}</p>
+    <hr>
+    <a href="/admin/author-view">Admin Home</a>
+
+
+{% endblock %}
+

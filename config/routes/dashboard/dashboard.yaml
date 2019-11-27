@@ -3,7 +3,23 @@ newCategory:
   controller: App\Controller\admin\CategoryController::newCategory
   methods: GET|POST
 
+# mock author
 newAuthor:
+  path: /admin/new-author
+  controller: App\Controller\admin\AuthorController::newAuthor
+  methods: GET|POST
+
+author_view:
+  path: /admin/author-view
+  controller: App\Controller\admin\AuthorController::index
+  methods: GET|POST
+
+author_info:
+  path: /admin/author/{id}
+  controller: App\Controller\admin\AuthorController::authorInfo
+  methods: GET|POST
+
+author_new:
   path: /admin/new-author
   controller: App\Controller\admin\AuthorController::newAuthor
   methods: GET|POST

@@ -1,0 +1,57 @@
+{% extends'baseadmin.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+    {% if authors %}
+        <table id="authors" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Author Name</th>
+                    <th>Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for author in authors %}
+                    <tr>
+                        <td>{{ author.name }}</td>
+                        <td><a href="/admin/author/{{ author.id }}" class="btn btn-outline-info">INFO</a></td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No Authors to Display</p>
+    {% endif %}
+
+{#    {% if articles %}#}
+{#        <table id="articles" class="table tale-striped">#}
+{#            <thead>#}
+{#            <tr>#}
+{#                <th>Article Title</th>#}
+{#                <th>Actions</th>#}
+{#            </tr>#}
+{#            </thead>#}
+{#            <tbody>#}
+{#            {% for article in articles %}#}
+{#                <tr>#}
+{#                    <td>{{ article.title }}</td>#}
+{#                    <td>#}
+{#                        <a href="/article/{{ article.id }}" class="btn btn-dark">Show</a>#}
+{#                        <a href="/article/edit/{{ article.id }}" class="btn btn-light">Edit</a>#}
+{#                        <a href="#" class="btn btn-outline-danger delete-article" data-id="{{ article.id }}">Delete</a>#}
+{#                    </td>#}
+{#                </tr>#}
+{#            {% endfor %}#}
+{#            </tbody>#}
+{#        </table>#}
+{#    {% else %}#}
+{#        <p>No articles to display</p>#}
+{#    {% endif %}#}
+{% endblock %}
+
+{#{% block javascripts %}#}
+{#    <script src="{{ asset('js/main.js') }}"></script>#}
+{#{% endblock %}#}
