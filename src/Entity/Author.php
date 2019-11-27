@@ -18,6 +18,7 @@ class Author
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @ORM\OneToMany(targetEntity="App\Entity\Posts", mappedBy="author")
      */
     private $name;
 

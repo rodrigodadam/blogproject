@@ -18,6 +18,7 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @ORM\OneToMany(targetEntity="App\Entity\Posts", mappedBy="caterory")
      */
     private $name;
 
