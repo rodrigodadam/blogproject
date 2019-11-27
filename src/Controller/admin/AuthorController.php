@@ -34,13 +34,13 @@ class AuthorController extends AbstractController
 
         $form = $this->createFormBuilder($author)
             ->add('name', TextType::class, array(
-                'required' => false,
+                'required' => true,
                 'attr' => array('class' => 'form-control')))
             ->add('email', EmailType::class, array(
-                'required' => false,
+                'required' => true,
                 'attr' => array('class' => 'form-control')))
             ->add('about', TextareaType::class, array(
-                'required' => false,
+                'required' => true,
                 'attr' => array('class' => 'form-control')
             ))
             ->add('save', SubmitType::class, array(
@@ -48,6 +48,18 @@ class AuthorController extends AbstractController
                 'attr' => array('class' => 'btn btn-primary mt-3')
             ))
             ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $author = $form->getData();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($author);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('author_view');
+        }
 
         return $this->render('admin/new-author.html.twig', array(
             'form' => $form->createView()

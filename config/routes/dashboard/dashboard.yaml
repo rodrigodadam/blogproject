@@ -4,10 +4,10 @@ newCategory:
   methods: GET|POST
 
 # mock author
-newAuthor:
-  path: /admin/new-author
-  controller: App\Controller\admin\AuthorController::newAuthor
-  methods: GET|POST
+#newAuthor:
+#  path: /admin/new-author
+#  controller: App\Controller\admin\AuthorController::newAuthor
+#  methods: GET|POST
 
 author_view:
   path: /admin/author-view

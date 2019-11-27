@@ -16,8 +16,9 @@
                 {% for author in authors %}
                     <tr>
                         <td>{{ author.name }}</td>
-                        <td><a href="/admin/author/{{ author.id }}" class="btn btn-outline-info">INFO</a></td>
-
+                        <td><a href="/admin/author/{{ author.id }}" class="btn btn-outline-info">INFO</a>
+                        <a href="/admin/new-author" class="btn btn-primary">NEW</a></>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
