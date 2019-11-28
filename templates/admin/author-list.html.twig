@@ -1,0 +1,36 @@
+{% extends'baseadmin.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        {% if authors %}
+            <table id="authors" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Author Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for author in authors %}
+                        <tr>
+                            <td>{{ author.name }}</td>
+                            <td>
+                                <a href="/admin/author-info/{{ author.id }}" class="btn btn-info">Info</a>
+                                <a href="/admin/author-edit/{{ author.id }}" class="btn btn-light">Edit</a>
+                                <a href="#" class="btn btn-outline-danger delete-author" data-id="{{ author.id }}">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No Authors to Display</p>
+        {% endif %}
+    </div>
+
+{% endblock %}
+

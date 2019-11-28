@@ -1,7 +1,7 @@
-newCategory:
-  path: /admin/new-category
-  controller: App\Controller\admin\CategoryController::newCategory
-  methods: GET|POST
+#newCategory:
+#  path: /admin/new-category
+#  controller: App\Controller\admin\CategoryController::newCategory
+#  methods: GET|POST
 
 # mock author
 #newAuthor:
@@ -9,23 +9,52 @@ newCategory:
 #  controller: App\Controller\admin\AuthorController::newAuthor
 #  methods: GET|POST
 
-author_view:
-  path: /admin/author-view
-  controller: App\Controller\admin\AuthorController::index
-  methods: GET|POST
-
-author_info:
-  path: /admin/author/{id}
-  controller: App\Controller\admin\AuthorController::authorInfo
-  methods: GET|POST
-
-author_new:
-  path: /admin/new-author
-  controller: App\Controller\admin\AuthorController::newAuthor
-  methods: GET|POST
-
 contactAction:
   path: /contact/new-contact-us
   controller: App\Controller\ContactController::contactAction
   methods: GET|POST
 
+author_list:
+  path: /admin/author-list
+  controller: App\Controller\admin\AuthorController::authorList
+  methods: GET
+
+author_new:
+  path: /admin/author-new
+  controller: App\Controller\admin\AuthorController::authorNew
+  methods: GET|POST
+
+author_info:
+  path: /admin/author-info/{id}
+  controller: App\Controller\admin\AuthorController::authorInfo
+  methods: GET
+
+author_edit:
+  path: /admin/author-edit/{id}
+  controller: App\Controller\admin\AuthorController::authorEdit
+  methods: GET|POST
+
+author_delete:
+  path: /admin/author-delete/{id}
+  controller: App\Controller\admin\AuthorController::authorDelete
+  methods: DELETE
+
+category_list:
+  path: /admin/category-list
+  controller: App\Controller\admin\CategoryController::categorylist
+  methods: GET|POST
+
+category_new:
+  path: /admin/category-new
+  controller: App\Controller\admin\CategoryController::categoryNew
+  methods: GET|POST
+
+category_edit:
+  path: /admin/category-edit/{id}
+  controller: App\Controller\admin\CategoryController::categoryEdit
+  methods: GET|POST
+
+category_delete:
+  path: /admin/category-delete/{id}
+  controller: App\Controller\admin\CategoryController::categoryDelete
+  methods: GET|POST
