@@ -34,8 +34,7 @@ class Posts
     private $category;
 
     /**
-     * @ORM\Column(name="photo" type="string", length=500)
-     * @Assert\File(maxSize="500k", mineTypes={"image/jpeg", "image/jpg", "image/png", "image/gif"})
+     * @ORM\Column(type="string", length=500)
      */
     private $banner;
 
