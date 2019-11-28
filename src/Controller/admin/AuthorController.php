@@ -96,6 +96,8 @@ class AuthorController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
 
+            $this->addFlash('info', 'Author created Successfully.');
+
             return $this->redirectToRoute('author_list');
         }
 

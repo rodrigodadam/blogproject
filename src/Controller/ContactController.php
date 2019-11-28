@@ -22,12 +22,6 @@ class ContactController extends AbstractController
     public function contactAction(Request $request)
     {
         $form_data = $request->request->all();
-//        $form_data_mock = [
-//            'name' => 'title',
-//            'email' => '/src/images'
-//            'subject' => '/src/images'
-//            'message' => '/src/images'
-//        ];
 
         //TODO: validate fields
 
@@ -50,3 +44,10 @@ class ContactController extends AbstractController
     }
 
 }
+
+//        $form_data_mock = [
+//            'name' => 'title',
+//            'email' => '/src/images'
+//            'subject' => '/src/images'
+//            'message' => '/src/images'
+//        ];

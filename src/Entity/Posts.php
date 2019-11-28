@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraint as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostsRepository")
@@ -16,10 +17,6 @@ class Posts
      */
     private $id;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -34,12 +31,14 @@ class Posts
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="name")
      */
-    private $caterory;
+    private $category;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="photo" type="string", length=500)
+     * @Assert\File(maxSize="500k", mineTypes={"image/jpeg", "image/jpg", "image/png", "image/gif"})
      */
     private $banner;
+
 
     /**
      * @ORM\Column(type="text")
@@ -96,17 +95,17 @@ class Posts
     /**
      * @return mixed
      */
-    public function getCaterory()
+    public function getCategory()
     {
-        return $this->caterory;
+        return $this->category;
     }
 
     /**
-     * @param mixed $caterory
+     * @param mixed $category
      */
-    public function setCaterory($caterory): void
+    public function setCategory($category): void
     {
-        $this->caterory = $caterory;
+        $this->category = $category;
     }
 
     /**
@@ -189,5 +188,9 @@ class Posts
         $this->numberOfComments = $numberOfComments;
     }
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
 }

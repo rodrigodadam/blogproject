@@ -58,3 +58,13 @@ category_delete:
   path: /admin/category-delete/{id}
   controller: App\Controller\admin\CategoryController::categoryDelete
   methods: GET|POST
+
+post_list:
+  path: /post/post-list
+  controller: App/Controller/Posts/PostController::postList
+  methods: GET|POST
+
+post_new:
+  path: /post/post-new
+  controller: App/Controller/Posts/PostController::postNew
+  methods: GET|POST
