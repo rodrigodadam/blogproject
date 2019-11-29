@@ -16,7 +16,5 @@ contact:
 
 
 
-
-
 dashboard:
     resource: 'routes/dashboard/dashboard.yaml'

@@ -68,3 +68,8 @@ post_new:
   path: /post/post-new
   controller: App/Controller/Posts/PostController::postNew
   methods: GET|POST
+
+portfolio_1:
+  path: /portfolio/first-project
+  controller: App\Controller\PortfolioController::project01
+  methods: GET

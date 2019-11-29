@@ -14,4 +14,12 @@ class PortfolioController extends AbstractController
             'controller_name' => 'PortfolioController',
         ]);
     }
+
+    public function project01()
+    {
+        return $this->render('portfolio/first-project.html.twig', [
+            'controller_name' => 'PortfolioController',
+        ]);
+    }
+
 }
