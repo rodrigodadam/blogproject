@@ -9,6 +9,23 @@
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
+
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300i,400,700" rel="stylesheet">
+{#        <link rel="stylesheet" href="{{ asset('assets-galery/fonts/icomoon/style.css') }}">#}
+{#        <link rel="stylesheet" href="{{ asset('assets-galery/css/bootstrap.min.css') }}">#}
+{#        <link rel="stylesheet" href="{{ asset('assets-galery/css/magnific-popup.css') }}">#}
+        <link rel="stylesheet" href="{{ asset('assets-galery/css/jquery-ui.css') }}">
+{#        <link rel="stylesheet" href="{{ asset('assets-galery/css/owl.carousel.min.css') }}">#}
+{#        <link rel="stylesheet" href="{{ asset('assets-galery/css/owl.theme.default.min.css') }}">#}
+
+        <!-- Gallery script -->
+        <link rel="stylesheet" href="{{ asset('assets-galery/css/lightgallery.min.css') }}">
+
+{#        <link rel="stylesheet" href="{{ asset('assets-galery/css/bootstrap-datepicker.css') }}">#}
+{#        <link rel="stylesheet" href="{{ asset('assets-galery/fonts/flaticon/font/flaticon.css') }}">#}
+{#        <link rel="stylesheet" href="{{ asset('assets-galery/css/swiper.css') }}">#}
+{#        <link rel="stylesheet" href="{{ asset('assets-galery/css/aos.css') }}">#}
+        <link rel="stylesheet" href="{{ asset('assets-galery/css/style2.css') }}">
     {% endblock %}
 </head>
 <body>
@@ -16,10 +33,10 @@
 <div>
     {% block body %}{% endblock %}
 </div>
-
+<div class="container-fluid">
 {{ include('inc/instagram.html.twig') }}
 {{ include('inc/footer.html.twig') }}
-
+</div>
 {% block javascripts %}
     <!-- jQuery (Necessary for All JavaScript Plugins) -->
     <script src="{{ asset('assets/js/jquery/jquery-2.2.4.min.js') }}"></script>
@@ -33,6 +50,30 @@
     <script src="{{ asset('assets/js/active.js') }}"></script>
     <!-- Add by RD -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+
+    <script src="{{ asset('assets-galery/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('assets-galery/js/jquery-migrate-3.0.1.min.js') }}"></script>
+    <script src="{{ asset('assets-galery/js/jquery-ui.js') }}"></script>
+    <script src="{{ asset('assets-galery/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets-galery/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets-galery/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets-galery/js/jquery.stellar.min.js') }}"></script>
+    <script src="{{ asset('assets-galery/js/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('assets-galery/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('assets-galery/js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('assets-galery/js/swiper.min.js') }}"></script>
+    <script src="{{ asset('assets-galery/js/aos.js') }}"></script>
+    <script src="{{ asset('assets-galery/js/picturefill.min.js') }}"></script>
+    <script src="{{ asset('assets-galery/js/lightgallery-all.min.js') }}"></script>
+    <script src="{{ asset('assets-galery/js/jquery.mousewheel.min.js') }}"></script>
+
+    <script src="{{ asset('assets-galery/js/main.js') }}"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#lightgallery').lightGallery();
+        });
+    </script>
 {% endblock %}
 </body>
 </html>
