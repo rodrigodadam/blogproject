@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\SecurityUser;
+use App\Entity\User;
 use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,10 +18,10 @@ class RegisterController extends AbstractController
     public function registerUser(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $user = $entityManager->getRepository(SecurityUser::class)->findAll();
+        $user = $entityManager->getRepository(User::class)->findAll();
         dump($user);
 
-        $user = new SecurityUser();
+        $user = new User();
         $form = $this->createForm(RegisterUserType::class, $user);
         $form->handleRequest($request);
 

@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\SecurityUser;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -29,7 +29,7 @@ class RegisterUserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => SecurityUser::class,
+            'data_class' => User::class,
         ]);
     }
 }

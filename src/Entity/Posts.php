@@ -60,7 +60,7 @@ class Posts
     private $numberOfComments;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\SecurityUser", inversedBy="posts")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
      */
     private $securityUser;
 
@@ -197,12 +197,12 @@ class Posts
         return $this->id;
     }
 
-    public function getSecurityUser(): ?SecurityUser
+    public function getSecurityUser(): ?User
     {
         return $this->securityUser;
     }
 
-    public function setSecurityUser(?SecurityUser $securityUser): self
+    public function setSecurityUser(?User $securityUser): self
     {
         $this->securityUser = $securityUser;
 

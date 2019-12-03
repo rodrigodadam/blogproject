@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="App\Repository\SecurityUserRepository")
  * @UniqueEntity("email")
  */
-class SecurityUser implements UserInterface
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -24,10 +24,22 @@ class SecurityUser implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Please enter a valid email address.")
      * @Assert\Email()
      */
     private $email;
+
+    /**
+     * @ORM\Column(type="string", length=45)
+     * @Assert\NotBlank(message="Valid first name is required.")
+     */
+    private $first_name;
+
+    /**
+     * @ORM\Column(type="string", length=45)
+     * @Assert\NotBlank(message="Valid last name is required.")
+     */
+    private $last_name;
 
     /**
      * @ORM\Column(type="json")
@@ -37,8 +49,8 @@ class SecurityUser implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\NotBlank()
-     * @Assert\Length(max=64)
+     * @Assert\NotBlank(message="Please enter a valid password.")
+     * @Assert\Length(max=4096)
      */
     private $password;
 
@@ -197,4 +209,38 @@ class SecurityUser implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstName()
+    {
+        return $this->first_name;
+    }
+
+    /**
+     * @param mixed $first_name
+     */
+    public function setFirstName($first_name): void
+    {
+        $this->first_name = $first_name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastName()
+    {
+        return $this->last_name;
+    }
+
+    /**
+     * @param mixed $last_name
+     */
+    public function setLastName($last_name): void
+    {
+        $this->last_name = $last_name;
+    }
+
+
 }
