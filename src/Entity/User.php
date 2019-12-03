@@ -55,14 +55,24 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Posts", mappedBy="securityUser")
+     * @ORM\OneToMany(targetEntity="App\Entity\Posts", mappedBy="user")
      */
     private $posts;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="securityUser")
+     * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="Category")
      */
     private $category;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $about;
+
+    /**
+     * @ORM\Column(type="string", length=500)
+     */
+    private $image_url;
 
     public function __construct()
     {
@@ -156,11 +166,45 @@ class User implements UserInterface
         return $this->posts;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getAbout()
+    {
+        return $this->about;
+    }
+
+    /**
+     * @param mixed $about
+     */
+    public function setAbout($about): void
+    {
+        $this->about = $about;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImageUrl()
+    {
+        return $this->image_url;
+    }
+
+    /**
+     * @param mixed $image_url
+     */
+    public function setImageUrl($image_url): void
+    {
+        $this->image_url = $image_url;
+    }
+
+
+
     public function addPost(Posts $post): self
     {
         if (!$this->posts->contains($post)) {
             $this->posts[] = $post;
-            $post->setSecurityUser($this);
+            $post->setUser($this);
         }
 
         return $this;
@@ -171,8 +215,8 @@ class User implements UserInterface
         if ($this->posts->contains($post)) {
             $this->posts->removeElement($post);
             // set the owning side to null (unless already changed)
-            if ($post->getSecurityUser() === $this) {
-                $post->setSecurityUser(null);
+            if ($post->getUser() === $this) {
+                $post->setUser(null);
             }
         }
 
@@ -191,7 +235,7 @@ class User implements UserInterface
     {
         if (!$this->category->contains($category)) {
             $this->category[] = $category;
-            $category->setSecurityUser($this);
+            $category->setUser($this);
         }
 
         return $this;
@@ -202,8 +246,8 @@ class User implements UserInterface
         if ($this->category->contains($category)) {
             $this->category->removeElement($category);
             // set the owning side to null (unless already changed)
-            if ($category->getSecurityUser() === $this) {
-                $category->setSecurityUser(null);
+            if ($category->getUser() === $this) {
+                $category->setUser(null);
             }
         }
 
@@ -242,5 +286,9 @@ class User implements UserInterface
         $this->last_name = $last_name;
     }
 
+    public function __toString()
+    {
+        return $this->first_name;
+    }
 
 }

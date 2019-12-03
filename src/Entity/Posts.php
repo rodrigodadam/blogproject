@@ -24,9 +24,9 @@ class Posts
     private $title;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Author", inversedBy="name")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="first_name")
      */
-    private $author;
+    private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="name")
@@ -36,7 +36,7 @@ class Posts
     /**
      * @ORM\Column(type="string", length=500)
      */
-    private $banner;
+    private $banner_url;
 
 
     /**
@@ -58,11 +58,6 @@ class Posts
      * @ORM\Column(type="integer")
      */
     private $numberOfComments;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
-     */
-    private $securityUser;
 
     /**
      * @return mixed
@@ -197,16 +192,38 @@ class Posts
         return $this->id;
     }
 
-    public function getSecurityUser(): ?User
+    /**
+     * @return mixed
+     */
+    public function getUser()
     {
-        return $this->securityUser;
+        return $this->user;
     }
 
-    public function setSecurityUser(?User $securityUser): self
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user): void
     {
-        $this->securityUser = $securityUser;
-
-        return $this;
+        $this->user = $user;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getBannerUrl()
+    {
+        return $this->banner_url;
+    }
+
+    /**
+     * @param mixed $banner_url
+     */
+    public function setBannerUrl($banner_url): void
+    {
+        $this->banner_url = $banner_url;
+    }
+
+
 
 }

@@ -25,7 +25,7 @@ class Category
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="category")
      */
-    private $securityUser;
+    private $User;
 
     /**
      * @return mixed
@@ -48,16 +48,28 @@ class Category
         return $this->id;
     }
 
-    public function getSecurityUser(): ?User
+    public function getUser(): ?User
     {
-        return $this->securityUser;
+        return $this->User;
     }
 
-    public function setSecurityUser(?User $securityUser): self
+    public function setUser(?User $User): self
     {
-        $this->securityUser = $securityUser;
+        $this->User = $User;
 
         return $this;
+    }
+
+    /**
+     * Generates the magic method
+     *
+     */
+    public function __toString()
+    {
+        // to show the name of the Category in the select
+        return $this->name;
+        // to show the id of the Category in the select
+        // return $this->id;
     }
 
 
