@@ -23,6 +23,11 @@ class Category
     private $name;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\SecurityUser", inversedBy="category")
+     */
+    private $securityUser;
+
+    /**
      * @return mixed
      */
     public function getName()
@@ -41,6 +46,18 @@ class Category
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getSecurityUser(): ?SecurityUser
+    {
+        return $this->securityUser;
+    }
+
+    public function setSecurityUser(?SecurityUser $securityUser): self
+    {
+        $this->securityUser = $securityUser;
+
+        return $this;
     }
 
 
