@@ -8,7 +8,7 @@ security:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
-                class: App\Entity\SecurityUser
+                class: App\Entity\User
                 property: email
     firewalls:
         dev:
@@ -30,7 +30,7 @@ security:
                 username_parameter: 'email'
                 password_parameter: 'password'
                 csrf_token_generator: security.csrf.token_manager
-                default_target_path: admin/register
+                default_target_path: admin
                 always_use_default_target_path: true
 
             guard:
@@ -55,4 +55,4 @@ security:
 
         # the 'path' value can be any valid regular expression
         # (this one will match URLs like /api/post/7298 and /api/comment/528491)
-        - { path: ^/api/(post|comment)/\d+$, roles: ROLE_USER }
+#        - { path: ^/api/(post|comment)/\d+$, roles: ROLE_USER }

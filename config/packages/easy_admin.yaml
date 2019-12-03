@@ -1,0 +1,11 @@
+easy_admin:
+    site_name: 'BlogProject'
+    user:
+        name_property_path: ''
+    entities:
+        # List the entity class name you want to manage
+        - App\Entity\Author
+        - App\Entity\Category
+        - App\Entity\ContactUs
+        - App\Entity\Posts
+        - App\Entity\User
