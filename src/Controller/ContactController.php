@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\ContactUs;
 use Doctrine\DBAL\Connection;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-
-
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Email;
 
 
 class ContactController extends AbstractController
@@ -19,7 +21,7 @@ class ContactController extends AbstractController
         ]);
     }
 
-    public function contactAction(Request $request)
+    public function contactAction(Request $request, MailerInterface $mailer)
     {
         $form_data = $request->request->all();
 
@@ -36,7 +38,20 @@ class ContactController extends AbstractController
         $entityManager->persist($contactus);
         $entityManager->flush();
 
+
         //TODO: Create js banner with confirmation
+
+        $email = (new TemplatedEmail())
+            ->from(new Address('no-reply@blogproject.com', 'Blog Project'))
+            ->to(new Address($contactus->getEmail(), $contactus->getName()))
+            ->subject('Thank you for you contact')
+            ->replyTo('contact@blogproject.com')
+            ->htmlTemplate('email/reply.html.twig')
+            ->context([
+                //'contactus' => $contactus
+            ]);
+
+        $mailer->send($email);
 
         return $this->render('contact/contact.html.twig', [
             'controller_name' => 'ContactController',
