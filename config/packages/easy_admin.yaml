@@ -9,14 +9,34 @@ easy_admin:
             class: App\Entity\Category
             label: Categories
 
-            actions:
-               - { name: 'edit', icon: 'pencil', label: 'Edit' }
-               - { name: 'show', icon: 'info-circle', label: '' }
         ContactUs:
             class: App\Entity\ContactUs
             label: Emails To Reply
         Posts:
             class: App\Entity\Posts
+            label: "Posts"
+            form:
+              fields:
+                - {type: 'group', icon: 'pencil', label: 'Basic Information', css_class: 'col-lg-7'}
+                - title
+                - {property: 'content', type: 'text_editor'}
+                - createdAt
+                - updatedAt
+#                - published
+#                - {type: 'group', icon: 'th-list', label: 'Other Information', css_class: 'col-lg-3'}
+                - category
+                - author
+#                - {property: 'banner', type: 'file'}
+
+#            new:
+#                fields:
+#                    - 'title'
+#                    - {property: 'banner_url', type: 'file'}
+#                    - 'Content'
+#                    -  CreatedAt
+#                    -  UpdatedAt
+#                    -  Author
+#                    -  Category
         User:
             class: App\Entity\User
 
