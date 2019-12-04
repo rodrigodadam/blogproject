@@ -44,10 +44,13 @@ class NewsLetterController extends AbstractController
 
         $mailer->send($email);
 
+        $previousRoute = $request->server->get('HTTP_REFERER');
 
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
+        $routeToRedirect = explode("/",$previousRoute);
+
+        $routeToRedirect[3] = $routeToRedirect[3] === "" ? "index" : $routeToRedirect[3];
+
+        return $this->redirectToRoute($routeToRedirect[3]);
 
     }
 }
