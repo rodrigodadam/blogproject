@@ -73,3 +73,8 @@ portfolio_1:
   path: /portfolio/first-project
   controller: App\Controller\PortfolioController::project01
   methods: GET
+
+news_letter:
+  path: /news-letter
+  controller: App\Controller\NewsLetterController::newsLetterAction
+  methods: GET|POST
