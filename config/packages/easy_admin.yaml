@@ -1,9 +1,28 @@
 easy_admin:
     site_name: 'BlogProject'
 
+    list:
+        title: 'List of %%entity_label%%'
+
     entities:
+        Category:
+            class: App\Entity\Category
+            label: Categories
+
+            actions:
+               - { name: 'edit', icon: 'pencil', label: 'Edit' }
+               - { name: 'show', icon: 'info-circle', label: '' }
+        ContactUs:
+            class: App\Entity\ContactUs
+            label: Emails To Reply
+        Posts:
+            class: App\Entity\Posts
+        User:
+            class: App\Entity\User
+
+
         # List the entity class name you want to manage
-        - App\Entity\Category
-        - App\Entity\ContactUs
-        - App\Entity\Posts
-        - App\Entity\User
+#        - App\Entity\Category
+#        - App\Entity\ContactUs
+#        - App\Entity\Posts
+#        - App\Entity\User
