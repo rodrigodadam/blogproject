@@ -55,14 +55,9 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Posts", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Posts", mappedBy="author")
      */
     private $posts;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Category", mappedBy="Category")
-     */
-    private $category;
 
     /**
      * @ORM\Column(type="text")
@@ -204,7 +199,7 @@ class User implements UserInterface
     {
         if (!$this->posts->contains($post)) {
             $this->posts[] = $post;
-            $post->setUser($this);
+            $post->setAuthor($this);
         }
 
         return $this;
@@ -215,8 +210,8 @@ class User implements UserInterface
         if ($this->posts->contains($post)) {
             $this->posts->removeElement($post);
             // set the owning side to null (unless already changed)
-            if ($post->getUser() === $this) {
-                $post->setUser(null);
+            if ($post->getAuthor() === $this) {
+                $post->setAuthor(null);
             }
         }
 
@@ -235,7 +230,7 @@ class User implements UserInterface
     {
         if (!$this->category->contains($category)) {
             $this->category[] = $category;
-            $category->setUser($this);
+            $category->setName($this);
         }
 
         return $this;
@@ -246,8 +241,8 @@ class User implements UserInterface
         if ($this->category->contains($category)) {
             $this->category->removeElement($category);
             // set the owning side to null (unless already changed)
-            if ($category->getUser() === $this) {
-                $category->setUser(null);
+            if ($category->getName() === $this) {
+                $category->setName(null);
             }
         }
 

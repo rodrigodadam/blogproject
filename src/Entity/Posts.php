@@ -26,7 +26,7 @@ class Posts
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="first_name")
      */
-    private $user;
+    private $author;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="name")
@@ -192,21 +192,7 @@ class Posts
         return $this->id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
 
-    /**
-     * @param mixed $user
-     */
-    public function setUser($user): void
-    {
-        $this->user = $user;
-    }
 
     /**
      * @return mixed

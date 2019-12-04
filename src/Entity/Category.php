@@ -22,10 +22,6 @@ class Category
      */
     private $name;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="category")
-     */
-    private $User;
 
     /**
      * @return mixed
@@ -48,17 +44,7 @@ class Category
         return $this->id;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->User;
-    }
 
-    public function setUser(?User $User): self
-    {
-        $this->User = $User;
-
-        return $this;
-    }
 
     /**
      * Generates the magic method
