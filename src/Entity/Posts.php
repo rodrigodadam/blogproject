@@ -36,8 +36,12 @@ class Posts
     /**
      * @ORM\Column(type="string", length=500)
      */
-    private $banner_url;
+    private $banner;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $published;
 
     /**
      * @ORM\Column(type="text")
@@ -53,11 +57,6 @@ class Posts
      * @ORM\Column(type="datetime")
      */
     private $updatedAt;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $numberOfComments;
 
     /**
      * @return mixed
@@ -81,6 +80,22 @@ class Posts
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublished()
+    {
+        return $this->published;
+    }
+
+    /**
+     * @param mixed $published
+     */
+    public function setPublished($published): void
+    {
+        $this->published = $published;
     }
 
     /**
@@ -192,24 +207,9 @@ class Posts
         return $this->id;
     }
 
-
-
-    /**
-     * @return mixed
-     */
-    public function getBannerUrl()
+    public function __toString()
     {
-        return $this->banner_url;
+        return $this->title;
     }
-
-    /**
-     * @param mixed $banner_url
-     */
-    public function setBannerUrl($banner_url): void
-    {
-        $this->banner_url = $banner_url;
-    }
-
-
 
 }

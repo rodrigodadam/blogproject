@@ -22,11 +22,11 @@ easy_admin:
                 - {property: 'content', type: 'text_editor'}
                 - createdAt
                 - updatedAt
-#                - published
+                - published
 #                - {type: 'group', icon: 'th-list', label: 'Other Information', css_class: 'col-lg-3'}
                 - category
                 - author
-#                - {property: 'banner', type: 'file'}
+                - {property: 'banner', type: 'file'}
 
 #            new:
 #                fields:
