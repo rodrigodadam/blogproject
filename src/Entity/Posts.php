@@ -3,10 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraint as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PostsRepository")
+ * @Vich\Uploadable()
  */
 class Posts
 {
@@ -36,7 +40,12 @@ class Posts
     /**
      * @ORM\Column(type="string", length=500)
      */
-    private $banner;
+    private $thumbnail;
+
+    /**
+     * @Vich\UploadableField(mapping="post_thumbnails", fileNameProperty="thumbnail")
+     */
+    private $thumbnailFile;
 
     /**
      * @ORM\Column(type="boolean")
@@ -58,25 +67,20 @@ class Posts
      */
     private $updatedAt;
 
-    /**
-     * @return mixed
-     */
-    public function getTitle()
+
+
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    /**
-     * @param mixed $title
-     */
-    public function setTitle($title): void
+    public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getAuthor()
     {
         return $this->author;
@@ -122,84 +126,110 @@ class Posts
         $this->category = $category;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getBanner()
-    {
-        return $this->banner;
-    }
+//    public function getBanner(): ?string
+//    {
+//        return $this->banner;
+//    }
+//
+//    public function setBanner($banner): self
+//    {
+//        $this->banner = $banner;
+//
+//        return $this;
+//    }
 
-    /**
-     * @param mixed $banner
-     */
-    public function setBanner($banner): void
-    {
-        $this->banner = $banner;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getContent()
+    public function getContent(): ?string
     {
         return $this->content;
     }
 
-    /**
-     * @param mixed $content
-     */
-    public function setContent($content): void
+    public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCreatedAt()
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+    }
+
+
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    /**
-     * @param mixed $createdAt
-     */
-    public function setCreatedAt($createdAt): void
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getUpdatedAt()
+
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }
 
-    /**
-     * @param mixed $updatedAt
-     */
-    public function setUpdatedAt($updatedAt): void
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
     }
+
+//    /**
+//     * @return mixed
+//     */
+//    public function getNumberOfComments()
+//    {
+//        return $this->numberOfComments;
+//    }
+//
+//    /**
+//     * @param mixed $numberOfComments
+//     */
+//    public function setNumberOfComments($numberOfComments): void
+//    {
+//        $this->numberOfComments = $numberOfComments;
+//    }
 
     /**
      * @return mixed
      */
-    public function getNumberOfComments()
+    public function getThumbnailFile()
     {
-        return $this->numberOfComments;
+        return $this->thumbnailFile;
     }
 
     /**
-     * @param mixed $numberOfComments
+     * @param mixed $thumbnailFile
+     * @throws \Exception
      */
-    public function setNumberOfComments($numberOfComments): void
+    public function setThumbnailFile($thumbnailFile): void
     {
-        $this->numberOfComments = $numberOfComments;
+        $this->thumbnailFile = $thumbnailFile;
+        if ($thumbnailFile) {
+            $this->updatedAt = new \DateTime('NOW');
+        }
+    }
+
+    public function getThumbnail(): ?string
+    {
+        return $this->thumbnail;
+    }
+
+    public function setThumbnail(?string $thumbnail): self
+    {
+        $this->thumbnail = $thumbnail;
+
+        return $this;
     }
 
     public function getId(): ?int
@@ -211,5 +241,7 @@ class Posts
     {
         return $this->title;
     }
+
+
 
 }

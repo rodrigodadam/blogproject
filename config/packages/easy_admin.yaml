@@ -17,17 +17,30 @@ easy_admin:
             label: "Posts"
             form:
               fields:
-                - {type: 'group', icon: 'pencil', label: 'Basic Information', css_class: 'col-lg-7'}
+                - {type: 'group', icon: 'pencil', label: 'Basic Information', css_class: 'col-lg-12'}
                 - title
                 - {property: 'content', type: 'text_editor'}
                 - createdAt
-                - updatedAt
+#                - updatedAt
                 - published
 #                - {type: 'group', icon: 'th-list', label: 'Other Information', css_class: 'col-lg-3'}
                 - category
                 - author
-                - {property: 'banner', type: 'file'}
-
+                - {property: 'thumbnailFile', type: 'vich_image', base_path: '%uploads_path%'}
+            list:
+              collapse_actions: true
+              actions: ['show', 'edit', 'delete']
+              batch_actions: ['delete']
+              title: "Some posts"
+              fields: ['title', 'content', 'createdAt', {property: 'thumbnail', type: 'image', base_path: '%uploads_path%'}]
+              filters: ['published']
+            show:
+              fields:
+                - title
+                - {property: 'content', type: 'raw'}
+                - createdAt
+                - published
+                - {property: 'thumbnail', type: 'image', base_path: '%uploads_path%'}
 #            new:
 #                fields:
 #                    - 'title'
