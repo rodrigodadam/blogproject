@@ -78,3 +78,13 @@ news_letter:
   path: /news-letter
   controller: App\Controller\NewsLetterController::newsLetterAction
   methods: GET|POST
+
+single_post:
+  path: /post/{id}
+  controller: App\Controller\SinglePostController::index
+  methods: GET
+
+category_details:
+  path: /category/{category_id}
+  controller: App\Controller\CategoryDetailsController::index
+  methods: GET

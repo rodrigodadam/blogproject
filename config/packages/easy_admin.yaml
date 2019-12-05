@@ -1,8 +1,15 @@
+parameters:
+    tinymce_api_key: tinymce_api_key
+
+
 easy_admin:
     design:
-      form_theme: # Both themes are needed for ckeditor integration
-        - "@EasyAdmin/form/bootstrap_4.html.twig"
-#        - "@FOSCKEditor/Form/ckeditor_widget.html.twig"
+      templates:
+        layout: 'admin/layout.html.twig'
+      assets:
+        js:
+          - 'https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js'
+
 
     site_name: 'BlogProject'
 
@@ -10,6 +17,7 @@ easy_admin:
         title: 'List of %%entity_label%%'
 
     entities:
+
         Category:
             class: App\Entity\Category
             label: Categories

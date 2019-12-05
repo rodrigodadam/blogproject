@@ -10,9 +10,9 @@
 
     <div class="blog-wrapper section-padding-100 clearfix">
         <div class="container">
-            <div class="row align-items-end">
+            <div class="row align-items-center">
                 <!-- Single Blog Area -->
-                <div class="col-12 col-lg-4">
+                <div class="col-6 col-lg-8">
                     <div class="single-blog-area clearfix mb-100">
                         <!-- Blog Content -->
                         <div class="single-blog-content">
@@ -24,15 +24,15 @@
                     </div>
                 </div>
                 <!-- Single Blog Area -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-catagory-area clearfix mb-100">
-                        <img src="{{ asset('assets/img/blog-img/01.jpg') }}" alt="">
-                        <!-- Catagory Title -->
-                        <div class="catagory-title">
-                            <a href="#">interior Design Posts</a>
-                        </div>
-                    </div>
-                </div>
+{#                <div class="col-12 col-md-6 col-lg-4">#}
+{#                    <div class="single-catagory-area clearfix mb-100">#}
+{#                        <img src="{{ asset('assets/img/blog-img/01.jpg') }}" alt="">#}
+{#                        <!-- Catagory Title -->#}
+{#                        <div class="catagory-title">#}
+{#                            <a href="#">interior Design Posts</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
                 <!-- Single Blog Area -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-catagory-area clearfix mb-100">
@@ -51,14 +51,14 @@
                 <div class="col-12 col-lg-9">
 
                     <!-- Single Blog Area  -->
-                    {% for post in posts [:2] %}
+                    {% for post in posts [:2]|reverse %}
                     <div class="single-blog-area blog-style-2 mb-50 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1000ms">
                         <div class="row align-items-center">
                             <div class="col-12 col-md-6">
                                 <div class="single-blog-thumbnail">
                                     <img src="{{ vich_uploader_asset(post, 'thumbnailFile') }}" alt="">
                                     <div class="post-date">
-                                        <a href="#">19<span>March</span></a>
+                                        <a href="#">{{post.createdAt|date('d')}}<span>{{post.createdAt|date('F')[:3]}}</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -67,8 +67,8 @@
                                 <div class="single-blog-content">
                                     <div class="line"></div>
                                     <a href="#" class="post-tag">{{ post.category }}</a>
-                                    <h4><a href="#" class="post-headline">{{ post.title }}</a></h4>
-                                    <p>{{ post.content |raw }}</p>
+                                    <h4><a href="/post/{{post.id}}" class="post-headline">{{ post.title }}</a></h4>
+                                    <p>{{ post.content[:250] |raw  }}...</p>
                                     <div class="post-meta">
                                         <p>By <a href="#">{{ post.author }}</a></p>
                                         <p>15 comments</p>
@@ -78,65 +78,14 @@
                         </div>
                     </div>
                     {% endfor %}
-{#                    <div class="single-blog-area blog-style-2 mb-50 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1000ms">#}
-{#                        <div class="row align-items-center">#}
-{#                            <div class="col-12 col-md-6">#}
-{#                                <div class="single-blog-thumbnail">#}
-{#                                    <img src="{{ asset('assets/img/blog-img/03.jpg') }}" alt="">#}
-{#                                    <div class="post-date">#}
-{#                                        <a href="#">19 <span>Mar</span></a>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <div class="col-12 col-md-6">#}
-{#                                <!-- Blog Content -->#}
-{#                                <div class="single-blog-content">#}
-{#                                    <div class="line"></div>#}
-{#                                    <a href="#" class="post-tag">Design</a>#}
-{#                                    <h4><a href="#" class="post-headline">Title Blog</a></h4>#}
-{#                                    <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt.</p>#}
-{#                                    <div class="post-meta">#}
-{#                                        <p>By <a href="#">LP</a></p>#}
-{#                                        <p>15 comments</p>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
 
-                    <!-- Single Blog Area  -->
-{#                    <div class="single-blog-area blog-style-2 mb-50 wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="1000ms">#}
-{#                        <div class="row align-items-center">#}
-{#                            <div class="col-12 col-md-6">#}
-{#                                <div class="single-blog-thumbnail">#}
-{#                                    <img src="{{ asset('assets/img/blog-img/04.jpg') }}" alt="">#}
-{#                                    <div class="post-date">#}
-{#                                        <a href="#">15 <span>Mar</span></a>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <div class="col-12 col-md-6">#}
-{#                                <!-- Blog Content -->#}
-{#                                <div class="single-blog-content">#}
-{#                                    <div class="line"></div>#}
-{#                                    <a href="#" class="post-tag">Travel</a>#}
-{#                                    <h4><a href="#" class="post-headline">Title Blog</a></h4>#}
-{#                                    <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt.</p>#}
-{#                                    <div class="post-meta">#}
-{#                                        <p>By <a href="#">LP</a></p>#}
-{#                                        <p>3 comments</p>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-
+                    {% for post in posts [2:1]|reverse %}
                     <!-- Single Blog Area  -->
                     <div class="single-blog-area blog-style-2 mb-50 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="1000ms">
                         <div class="row">
                             <div class="col-12">
                                 <div class="single-blog-thumbnail">
-                                    <img src="{{ asset('assets/img/blog-img/07.jpg') }}" alt="">
+                                    <img src="{{ vich_uploader_asset(post, 'thumbnailFile') }}" alt="">
                                     <div class="post-date">
                                         <a href="#">20 <span>Feb</span></a>
                                     </div>
@@ -157,7 +106,9 @@
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
 
+                    {% for post in posts [3:2]|reverse %}
                     <!-- Single Blog Area  -->
                     <div class="single-blog-area blog-style-2 mb-50 wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="1000ms">
                         <div class="row align-items-center">
@@ -184,33 +135,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Single Blog Area  -->
-                    <div class="single-blog-area blog-style-2 mb-50 wow fadeInUp" data-wow-delay="0.6s" data-wow-duration="1000ms">
-                        <div class="row align-items-center">
-                            <div class="col-12 col-md-6">
-                                <div class="single-blog-thumbnail">
-                                    <img src="{{ asset('assets/img/blog-img/06.jpg') }}" alt="">
-                                    <div class="post-date">
-                                        <a href="#">10 <span>Jan</span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <!-- Blog Content -->
-                                <div class="single-blog-content">
-                                    <div class="line"></div>
-                                    <a href="#" class="post-tag">Inspiration</a>
-                                    <h4><a href="#" class="post-headline">Title Post</a></h4>
-                                    <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt.</p>
-                                    <div class="post-meta">
-                                        <p>By <a href="#">LP</a></p>
-                                        <p>10 comments</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
 
                     <!-- Load More -->
                     <div class="load-more-btn mt-100 wow fadeInUp" data-wow-delay="0.7s" data-wow-duration="1000ms">

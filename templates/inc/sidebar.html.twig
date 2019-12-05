@@ -33,70 +33,26 @@
             <h5 class="title">Latest Posts</h5>
 
             <div class="widget-content">
-
+                {% for post in posts[:4]|reverse %}
                 <!-- Single Blog Post -->
                 <div class="single-blog-post d-flex align-items-center widget-post">
                     <!-- Post Thumbnail -->
                     <div class="post-thumbnail">
-                        <img src="{{ asset('assets/img/blog-img/sb1.jpg') }}" alt="">
+                        <a href="/post/{{post.id}}">
+                            <img src="{{ vich_uploader_asset(post, 'thumbnailFile') }}" alt="Image">
+                        </a>
                     </div>
                     <!-- Post Content -->
                     <div class="post-content">
-                        <a href="#" class="post-tag">Design</a>
-                        <h4><a href="#" class="post-headline">Blog Title</a></h4>
+                        <a href="/post/{{post.id}}" class="post-tag">{{ post.category }}</a>
+                        <h4><a href="/post/{{post.id}}" class="post-headline">{{ post.title }}</a></h4>
                         <div class="post-meta">
-                            <p><a href="#">30 Aug</a></p>
+                            <p><a href="/post/{{post.id}}">{{post.createdAt|date('d')}}{{post.createdAt|date('F')[:3]}}</a></p>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
 
-                <!-- Single Blog Post -->
-                <div class="single-blog-post d-flex align-items-center widget-post">
-                    <!-- Post Thumbnail -->
-                    <div class="post-thumbnail">
-                        <img src="{{ asset('assets/img/blog-img/sb2.jpg') }}" alt="">
-                    </div>
-                    <!-- Post Content -->
-                    <div class="post-content">
-                        <a href="#" class="post-tag">Design</a>
-                        <h4><a href="#" class="post-headline">Blog Title</a></h4>
-                        <div class="post-meta">
-                            <p><a href="#">30 Aug</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Blog Post -->
-                <div class="single-blog-post d-flex align-items-center widget-post">
-                    <!-- Post Thumbnail -->
-                    <div class="post-thumbnail">
-                        <img src="{{ asset('assets/img/blog-img/sb3.jpg') }}" alt="">
-                    </div>
-                    <!-- Post Content -->
-                    <div class="post-content">
-                        <a href="#" class="post-tag">Design</a>
-                        <h4><a href="#" class="post-headline">Blog Title</a></h4>
-                        <div class="post-meta">
-                            <p><a href="#">30 Aug</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Blog Post -->
-                <div class="single-blog-post d-flex align-items-center widget-post">
-                    <!-- Post Thumbnail -->
-                    <div class="post-thumbnail">
-                        <img src="{{ asset('assets/img/blog-img/sb4.jpg') }}" alt="">
-                    </div>
-                    <!-- Post Content -->
-                    <div class="post-content">
-                        <a href="#" class="post-tag">Design</a>
-                        <h4><a href="#" class="post-headline">Blog Title</a></h4>
-                        <div class="post-meta">
-                            <p><a href="#">30 Aug</a></p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -105,13 +61,9 @@
             <h5 class="title">Tags</h5>
             <div class="widget-content">
                 <ul class="tags">
-                    <li><a href="#">design</a></li>
-                    <li><a href="#">living-groom</a></li>
-                    <li><a href="#">travel</a></li>
-                    <li><a href="#">kitchen</a></li>
-                    <li><a href="#">inspiration</a></li>
-                    <li><a href="#">photography</a></li>
-                    <li><a href="#">adventure</a></li>
+                    {% for category in categories %}
+                    <li><a href="/category/{{ category.id }}">{{ category.name }}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
