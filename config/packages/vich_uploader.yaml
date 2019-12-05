@@ -3,9 +3,5 @@ vich_uploader:
 
     mappings:
         post_thumbnails:
-            uri_prefix: #%uploads_path%   #%uploads_path%
-            upload_destination: '%kernel.project_dir%/public%uploads_path%'    #%uploads_path%
-
-#            inject_on_load: false
-#            delete_on_update: true
-#            delete_on_remove: true
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public%uploads_path%'
